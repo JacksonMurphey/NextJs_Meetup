@@ -39,7 +39,7 @@ export const getStaticPaths = async () => {
 
 
     return {
-        fallback: false, //false means our all our meetupId values are supported and addressed below. If this false, and you dont address all values, you will get a 404 page for unlisted ones.
+        fallback: 'blocking', //false means our all our meetupId values are supported and addressed below. If this false, and you dont address all values, you will get a 404 page for unlisted ones. true or 'blocking' nextjs will not with 404 if it cannot find page immeadiately, will generate it and cache.
         paths: meetups.map(meetup => ({
             params: { meetupId: meetup._id.toString() }
         }))
